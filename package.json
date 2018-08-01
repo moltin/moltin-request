@@ -2,13 +2,16 @@
   "private": true,
   "name": "@moltin/request",
   "version": "0.0.0-semantic-release",
+  "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "rimraf dist && tsc -d",
+    "build": "yarn clean && tsc -d",
+    "clean": "rimraf dist",
+    "prepublish": "yarn build",
     "test": "jest"
   },
   "dependencies": {
@@ -22,8 +25,7 @@
     "ts-jest": "23.0.1",
     "typescript": "3.0.1"
   },
-  "jest": {
-    "verbose": true,
-    "testURL": "http://localhost/"
+  "publishConfig": {
+    "access": "public"
   }
 }
