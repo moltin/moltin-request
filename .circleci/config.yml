@@ -1,0 +1,47 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: 'circleci/node:latest'
+    steps:
+      - checkout
+      - run: yarn
+      - run: yarn build
+      - save_cache:
+          paths:
+            - node_modules
+          key: moltin-request-{{ checksum "package.json" }}
+  test:
+    docker:
+      - image: 'circleci/node:latest'
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - moltin-request-{{ checksum "package.json" }}
+      - run: yarn build
+      - run: yarn test
+  release:
+    docker:
+      - image: 'circleci/node:latest'
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - moltin-request-{{ checksum "package.json" }}
+      - run: yarn build
+      - run: npx semantic-release
+workflows:
+  version: 2
+  build_test_release:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
+      - release:
+          filters:
+            branches:
+              only: master
+          requires:
+            - test
