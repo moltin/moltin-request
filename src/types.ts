@@ -11,3 +11,9 @@ export interface Options {
 export interface Headers {
   [key: string]: string
 }
+
+export interface AuthBody {
+  grant_type: 'client_credentials' | 'implicit'
+  client_id: string
+  client_secret?: string
+}

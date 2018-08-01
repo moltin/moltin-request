@@ -1,6 +1,7 @@
 import 'cross-fetch/polyfill'
 
-import { Options, Headers } from './types'
+import { Options, Headers, AuthBody } from './types'
+import { removeLeadingSlash } from './utils'
 
 export class MoltinClient {
   private client_id: string
@@ -17,11 +18,10 @@ export class MoltinClient {
 
   async request(method: string, path: string, data: object = undefined) {
     try {
-      const { application, currency, customer_token } = this.options
-      const uri: string = `https://api.moltin.com/v2/${path}`.replace(
-        /([^:]\/)\/+/g,
-        '$1'
-      )
+      const { application, currency, customer_token }: Options = this.options
+      const uri: string = `https://api.moltin.com/v2/${removeLeadingSlash(
+        path
+      )}`
       const headers: Headers = {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${await this.authenticate()}`,
@@ -58,8 +58,8 @@ export class MoltinClient {
       throw new Error('You must provide a client_id')
     }
 
-    const uri = 'https://api.moltin.com/oauth/access_token'
-    const body = {
+    const uri: string = 'https://api.moltin.com/oauth/access_token'
+    const body: AuthBody = {
       grant_type: client_secret ? 'client_credentials' : 'implicit',
       client_id,
       ...(client_secret && { client_secret })
@@ -75,13 +75,13 @@ export class MoltinClient {
         .join('&')
     })
 
-    const json = await response.json()
+    const { access_token }: { access_token: string } = await response.json()
 
-    if (!json.access_token) {
+    if (!access_token) {
       throw new Error('Unable to obtain an access token')
     }
 
-    return json.access_token
+    return access_token
   }
 
   post(path: string, data: object) {
