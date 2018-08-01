@@ -12,15 +12,15 @@
     "test": "jest"
   },
   "dependencies": {
-    "cross-fetch": "^2.2.2"
+    "cross-fetch": "2.2.2"
   },
   "devDependencies": {
-    "@types/fetch-mock": "^6.0.3",
-    "fetch-mock": "^6.5.2",
-    "jest": "^23.1.0",
-    "rimraf": "^2.6.2",
-    "ts-jest": "^23.0.1",
-    "typescript": "^3.0.1"
+    "@types/fetch-mock": "6.0.3",
+    "fetch-mock": "6.5.2",
+    "jest": "23.4.2",
+    "rimraf": "2.6.2",
+    "ts-jest": "23.0.1",
+    "typescript": "3.0.1"
   },
   "jest": {
     "verbose": true,
