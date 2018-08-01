@@ -1,6 +1,6 @@
 import 'cross-fetch/polyfill'
 
-import { Options, Headers, AuthBody } from './types'
+import { InitOptions, Options, Headers, AuthBody } from './types'
 import { removeLeadingSlash } from './utils'
 
 export class MoltinClient {
@@ -8,17 +8,17 @@ export class MoltinClient {
   private client_secret?: string
   private options?: Options
 
-  constructor(options: Options = {}) {
+  constructor(options: InitOptions) {
     const { client_id, client_secret, ...others } = options
 
     this.client_id = client_id
     this.client_secret = client_secret ? client_secret : undefined
-    this.options = others
+    this.options = others || {}
   }
 
   async request(method: string, path: string, data: object = undefined) {
     try {
-      const { application, currency, customer_token }: Options = this.options
+      const { application, currency, customer_token } = this.options
       const uri: string = `https://api.moltin.com/v2/${removeLeadingSlash(
         path
       )}`

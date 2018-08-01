@@ -1,10 +1,14 @@
-export interface Options {
-  client_id?: string
+export interface InitOptions {
+  client_id: string
   client_secret?: string
   application?: string
   currency?: string
-  host?: string
-  version?: string
+  customer_token?: string
+}
+
+export interface Options {
+  application?: string
+  currency?: string
   customer_token?: string
 }
 
