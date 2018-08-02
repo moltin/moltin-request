@@ -1,0 +1,37 @@
+{
+  "name": "@moltin/request",
+  "version": "0.0.0-development",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "yarn clean && tsc -d",
+    "clean": "rimraf dist",
+    "prepublish": "yarn build",
+    "test": "jest",
+    "semantic-release": "semantic-release"
+  },
+  "dependencies": {
+    "cross-fetch": "2.2.2"
+  },
+  "devDependencies": {
+    "@types/fetch-mock": "6.0.3",
+    "@types/jest": "23.3.1",
+    "fetch-mock": "6.5.2",
+    "jest": "23.4.2",
+    "rimraf": "2.6.2",
+    "semantic-release": "15.9.3",
+    "ts-jest": "23.0.1",
+    "typescript": "3.0.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/moltin/moltin-request.git"
+  }
+}
