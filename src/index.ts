@@ -13,13 +13,23 @@ export class createClient {
 
     this.client_id = client_id
     this.client_secret = client_secret ? client_secret : undefined
-    this.options = others || {}
+    this.options = {
+      host: options.host ? options.host : 'api.moltin.com',
+      version: options.version ? options.version : 'v2',
+      ...others
+    }
   }
 
   async request(method: string, path: string, data: object = undefined) {
     try {
-      const { application, currency, customer_token } = this.options
-      const uri: string = `https://api.moltin.com/v2/${removeLeadingSlash(
+      const {
+        application,
+        currency,
+        customer_token,
+        host,
+        version
+      } = this.options
+      const uri: string = `https://${host}/${version}/${removeLeadingSlash(
         path
       )}`
       const headers: Headers = {

@@ -56,3 +56,19 @@ client
   .then(console.log)
   .catch(console.error)
 ```
+
+## 🚰 Kitchen sink
+
+```js
+import { createClient } from '@moltin/request'
+
+const client = new createClient({
+  client_id: '...',
+  client_secret: '...',
+  host: '...',
+  version: '...',
+  application: '...',
+  currency: '...',
+  customer_token: '...'
+})
+```
