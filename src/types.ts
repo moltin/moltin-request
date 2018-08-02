@@ -6,6 +6,7 @@ export interface InitOptions {
   application?: string
   currency?: string
   customer_token?: string
+  headers?: Headers
 }
 
 export interface Options {
@@ -14,6 +15,7 @@ export interface Options {
   customer_token?: string
   host?: string
   version?: string
+  headers?: Headers
 }
 
 export interface Headers {

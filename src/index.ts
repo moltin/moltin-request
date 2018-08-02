@@ -27,7 +27,8 @@ export class createClient {
         currency,
         customer_token,
         host,
-        version
+        version,
+        headers: customHeaders
       } = this.options
       const uri: string = `https://${host}/${version}/${removeLeadingSlash(
         path
@@ -37,7 +38,8 @@ export class createClient {
         Authorization: `Bearer ${await this.authenticate()}`,
         ...(application && { 'X-MOLTIN-APPLICATION': application }),
         ...(currency && { 'X-MOLTIN-CURRENCY': currency }),
-        ...(customer_token && { 'X-MOLTIN-CUSTOMER-TOKEN': customer_token })
+        ...(customer_token && { 'X-MOLTIN-CUSTOMER-TOKEN': customer_token }),
+        ...customHeaders
       }
 
       const response = await fetch(uri, {
