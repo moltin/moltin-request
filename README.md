@@ -69,6 +69,9 @@ const client = new createClient({
   version: '...',
   application: '...',
   currency: '...',
-  customer_token: '...'
+  customer_token: '...',
+  headers: {
+    Accept: 'application/json' // Insert additional headers
+  }
 })
 ```
