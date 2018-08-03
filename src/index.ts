@@ -64,13 +64,17 @@ export class createClient {
   }
 
   async authenticate() {
-    const { client_id, client_secret } = this
+    const {
+      client_id,
+      client_secret,
+      options: { host }
+    } = this
 
     if (!client_id) {
       throw new Error('You must provide a client_id')
     }
 
-    const uri: string = 'https://api.moltin.com/oauth/access_token'
+    const uri: string = `https://${host}/oauth/access_token`
     const body: AuthBody = {
       grant_type: client_secret ? 'client_credentials' : 'implicit',
       client_id,
