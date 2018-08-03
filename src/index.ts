@@ -49,12 +49,9 @@ export class createClient {
       })
       const json = await response.json()
 
-      if (response.ok) {
-        return json
-      }
-
       return {
-        errors: json.errors
+        statusCode: response.status,
+        ...json
       }
     } catch (errors) {
       return {
