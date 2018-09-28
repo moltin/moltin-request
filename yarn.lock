@@ -1573,9 +1573,9 @@ fb-watchman@^2.0.0:
   dependencies:
     bser "^2.0.0"
 
-fetch-mock@7.0.2:
-  version "7.0.2"
-  resolved "https://registry.yarnpkg.com/fetch-mock/-/fetch-mock-7.0.2.tgz#98875262bbad5a9be403a4cf2116bf6676531aeb"
+fetch-mock@7.0.6:
+  version "7.0.6"
+  resolved "https://registry.yarnpkg.com/fetch-mock/-/fetch-mock-7.0.6.tgz#da4389a8a8d6170f9abae22725bbd0c6ff009137"
   dependencies:
     babel-polyfill "^6.26.0"
     glob-to-regexp "^0.4.0"
