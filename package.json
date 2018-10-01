@@ -18,7 +18,7 @@
     "cross-fetch": "2.2.2"
   },
   "devDependencies": {
-    "@types/fetch-mock": "6.0.3",
+    "@types/fetch-mock": "6.0.4",
     "@types/jest": "23.3.2",
     "fetch-mock": "7.0.6",
     "jest": "23.6.0",
