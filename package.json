@@ -20,7 +20,7 @@
   "devDependencies": {
     "@types/fetch-mock": "6.0.4",
     "@types/jest": "23.3.7",
-    "fetch-mock": "7.2.0",
+    "fetch-mock": "7.2.1",
     "jest": "23.6.0",
     "rimraf": "2.6.2",
     "semantic-release": "15.10.5",
