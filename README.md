@@ -13,7 +13,8 @@ yarn add @moltin/request # npm install @moltin/request
 ## 🚀 Quickstart (implicit)
 
 ```js
-import { createClient } from '@moltin/request'
+const { createClient } = require('@moltin/request')
+# import { createClient } from '@moltin/request'
 
 const client = new createClient({
   client_id: '...'
@@ -28,7 +29,8 @@ client
 ## ⛽️ Quickstart (client credentials)
 
 ```js
-import { createClient } from '@moltin/request'
+const { createClient } = require('@moltin/request')
+# import { createClient } from '@moltin/request'
 
 const client = new createClient({
   client_id: '...',
@@ -60,7 +62,8 @@ client
 ## 🚰 Kitchen sink
 
 ```js
-import { createClient } from '@moltin/request'
+const { createClient } = require('@moltin/request')
+# import { createClient } from '@moltin/request'
 
 const client = new createClient({
   client_id: '...',
