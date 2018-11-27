@@ -2,6 +2,7 @@ import 'cross-fetch/polyfill'
 
 import { InitOptions, Options, Headers, AuthBody } from './types'
 import { removeLeadingSlash } from './utils'
+export { createCartIdentifier } from './utils'
 
 export class createClient {
   private client_id: string
