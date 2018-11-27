@@ -1,4 +1,5 @@
-import { removeLeadingSlash, createCartIdentifier } from './utils'
+import { removeLeadingSlash } from './utils'
+import { createCartIdentifier } from './'
 
 it('leading slash is removed', () => {
   const string = '/test'
