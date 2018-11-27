@@ -10,7 +10,6 @@
   "scripts": {
     "build": "yarn clean && tsc -d",
     "clean": "rimraf dist",
-    "prepublish": "yarn build",
     "test": "jest",
     "semantic-release": "semantic-release"
   },
