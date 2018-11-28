@@ -21,7 +21,12 @@ export class createClient {
     }
   }
 
-  async request(method: string, path: string, data: object = undefined) {
+  async request(
+    method: string,
+    path: string,
+    data: object = undefined,
+    requestHeaders: Headers = {}
+  ) {
     try {
       const {
         application,
@@ -29,11 +34,18 @@ export class createClient {
         customer_token,
         host,
         version,
-        headers: customHeaders
+        headers: classHeaders
       } = this.options
+
       const uri: string = `https://${host}/${version}/${removeLeadingSlash(
         path
       )}`
+
+      const customHeaders = {
+        ...classHeaders,
+        ...requestHeaders
+      }
+
       const headers: Headers = {
         'Content-Type': 'application/json',
         'X-MOLTIN-SDK-LANGUAGE': 'JS-REQUEST',
@@ -47,8 +59,11 @@ export class createClient {
       const response = await fetch(uri, {
         method,
         headers,
-        ...(data && { body: JSON.stringify({ data }) })
+        ...(data && customHeaders['Content-Type']
+          ? data
+          : { body: JSON.stringify({ data }) })
       })
+
       const json = await response.json()
 
       return {
@@ -74,6 +89,7 @@ export class createClient {
     }
 
     const uri: string = `https://${host}/oauth/access_token`
+
     const body: AuthBody = {
       grant_type: client_secret ? 'client_credentials' : 'implicit',
       client_id,
@@ -99,19 +115,19 @@ export class createClient {
     return access_token
   }
 
-  post(path: string, data: object) {
-    return this.request('POST', path, data)
+  post(path: string, data: object, headers: Headers) {
+    return this.request('POST', path, data, headers)
   }
 
-  get(path: string) {
-    return this.request('GET', path)
+  get(path: string, headers: Headers) {
+    return this.request('GET', path, undefined, headers)
   }
 
-  put(path: string, data: object) {
-    return this.request('PUT', path, data)
+  put(path: string, data: object, headers: Headers) {
+    return this.request('PUT', path, data, headers)
   }
 
-  delete(path: string) {
-    return this.request('DELETE', path)
+  delete(path: string, headers: Headers) {
+    return this.request('DELETE', path, headers)
   }
 }
