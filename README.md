@@ -28,6 +28,8 @@ client
 
 ## ⛽️ Quickstart (client credentials)
 
+*Note: You should not use client credentials on a client-side implementation, you could risk exposing your client secret, you can read more about authentication here https://docs.moltin.com/basics/authentication*
+
 ```js
 const { createClient } = require('@moltin/request')
 // import { createClient } from '@moltin/request'
