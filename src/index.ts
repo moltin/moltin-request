@@ -56,12 +56,14 @@ export class createClient {
         ...customHeaders
       }
 
+      const body = customHeaders['Content-Type']
+        ? data
+        : { body: JSON.stringify({ data }) }
+
       const response = await fetch(uri, {
         method,
         headers,
-        ...(data && customHeaders['Content-Type']
-          ? data
-          : { body: JSON.stringify({ data }) })
+        ...(data && body)
       })
 
       const json = await response.json()
