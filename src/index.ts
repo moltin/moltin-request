@@ -151,7 +151,8 @@ export class createClient {
         ...requestHeaders
       }
 
-      const headers: Headers = {
+      let headers
+      headers = {
         Authorization: `Bearer ${await this.authenticate()}`,
         ...(application && { 'X-MOLTIN-APPLICATION': application }),
         ...(currency && { 'X-MOLTIN-CURRENCY': currency }),
