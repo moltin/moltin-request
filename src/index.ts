@@ -161,9 +161,6 @@ export class createClient {
 
       headers = Object.assign(headers, formData.getHeaders())
 
-      console.log(formData)
-      console.log(headers)
-
       const response = await fetch(uri, {
         method,
         headers,
