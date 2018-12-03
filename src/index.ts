@@ -46,7 +46,8 @@ export class createClient {
         ...requestHeaders
       }
 
-      const headers: Headers = {
+      const headers: Headers
+      headers = {
         'Content-Type': 'application/json',
         'X-MOLTIN-SDK-LANGUAGE': 'JS-REQUEST',
         Authorization: `Bearer ${await this.authenticate()}`,
@@ -131,5 +132,61 @@ export class createClient {
 
   delete(path: string, headers: Headers) {
     return this.request('DELETE', path, headers)
+  }
+
+  formRequest = async (method, path, formData, requestHeaders) => {
+    try {
+      const {
+        application,
+        currency,
+        customer_token,
+        host,
+        version,
+        headers: classHeaders
+      } = this.options
+
+      const uri = `https://${host}/${version}/${removeLeadingSlash(path)}`
+
+      const customHeaders = {
+        ...classHeaders,
+        ...requestHeaders
+      }
+
+      let headers
+
+      headers = {
+        Authorization: `Bearer ${await this.authenticate()}`,
+        ...(application && { 'X-MOLTIN-APPLICATION': application }),
+        ...(currency && { 'X-MOLTIN-CURRENCY': currency }),
+        ...(customer_token && { 'X-MOLTIN-CUSTOMER-TOKEN': customer_token }),
+        ...customHeaders
+      }
+
+      headers = Object.assign(headers, formData.getHeaders())
+
+      console.log(formData)
+      console.log(headers)
+
+      const response = await fetch(uri, {
+        method,
+        headers,
+        body: formData
+      })
+
+      const json = await response.json()
+
+      return {
+        statusCode: response.status,
+        ...json
+      }
+    } catch (errors) {
+      return {
+        errors
+      }
+    }
+  }
+
+  formPost = (path, formData, headers) => {
+    return this.formRequest('POST', path, formData, headers)
   }
 }
