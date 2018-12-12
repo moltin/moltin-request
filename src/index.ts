@@ -129,7 +129,7 @@ export class createClient {
     return this.request('PUT', path, data, headers)
   }
 
-  delete(path: string, headers: Headers) {
-    return this.request('DELETE', path, headers)
+  delete(path: string, data: object, headers: Headers) {
+    return this.request('DELETE', path, data, headers)
   }
 }
