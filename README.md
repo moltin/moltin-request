@@ -26,9 +26,9 @@ client
   .catch(console.error)
 ```
 
-## ⛽️ Quickstart (client credentials)
+## Quickstart (client credentials)
 
-*Note: You should not use client credentials on a client-side implementation, you could risk exposing your client secret, you can read more about authentication here https://docs.moltin.com/basics/authentication*
+⚠️ You should not use client credentials on the client-side. You could risk exposing your client secret, you can read more about authentication [here](https://docs.moltin.com/basics/authentication).
 
 ```js
 const { createClient } = require('@moltin/request')
@@ -61,7 +61,7 @@ client
   .catch(console.error)
 ```
 
-## 🚰 Kitchen sink
+## Kitchen sink
 
 ```js
 const { createClient } = require('@moltin/request')
@@ -80,3 +80,9 @@ const client = new createClient({
   }
 })
 ```
+
+## Examples
+
+The examples below demonstrate how you connect this library with other frameworks and tools.
+
+- [Express](/examples/express)
