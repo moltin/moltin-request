@@ -1,0 +1,14 @@
+{
+  "private": true,
+  "bin": {
+    "moltin": "index.js"
+  },
+  "scripts": {
+    "cli": "node index.js"
+  },
+  "dependencies": {
+    "@moltin/request": "^1.4.2",
+    "meow": "^5.0.0",
+    "ora": "^3.0.0"
+  }
+}

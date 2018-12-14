@@ -87,3 +87,4 @@ The examples below demonstrate how you connect this library with other framework
 
 - [Express](/examples/express)
 - [Next.js](/examples/next)
+- [CLI app](/examples/cli-app)
