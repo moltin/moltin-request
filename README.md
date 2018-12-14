@@ -4,13 +4,13 @@
 
 > 🎮 Minimal Moltin API request library for Node + browsers
 
-## 🛠 Installation
+## Installation
 
 ```bash
 yarn add @moltin/request # npm install @moltin/request
 ```
 
-## 🚀 Quickstart (implicit)
+## Quickstart (implicit)
 
 ```js
 const { createClient } = require('@moltin/request')
