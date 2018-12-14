@@ -1,3 +1,4 @@
 ul
   each product in products
-    li= product.name
+    li
+      a(href=`/products/${product.id}`) #{product.name}

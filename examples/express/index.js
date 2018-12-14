@@ -14,4 +14,11 @@ app.get('/', async (req, res, next) => {
   res.render('index', { products })
 })
 
+app.get('/products/:id', async (req, res, next) => {
+  const { id } = req.params
+  const { data: product } = await moltin.get(`products/${id}`)
+
+  res.render('product', { product })
+})
+
 app.listen(3000)
