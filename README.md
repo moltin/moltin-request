@@ -86,3 +86,4 @@ const client = new createClient({
 The examples below demonstrate how you connect this library with other frameworks and tools.
 
 - [Express](/examples/express)
+- [Next.js](/examples/next)
