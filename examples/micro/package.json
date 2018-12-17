@@ -1,0 +1,7 @@
+{
+  "private": true,
+  "dependencies": {
+    "@moltin/request": "^1.4.2",
+    "micro": "^9.3.3"
+  }
+}
