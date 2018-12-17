@@ -85,37 +85,24 @@ const client = new createClient({
 
 The Moltin API provides you the ability to send various request headers that change the way data is stored or retrieved.
 
-By default this library will encode all data as JSON, however you can customise this by setting your own `Content-Type` header as a 4th argument to `get`, `post`, `put` and `delete`.
+By default this library will encode all data as JSON, however you can customise this by setting your own `Content-Type` header as an additional argument to `get`, `post`, `put` and `delete`.
 
-You can see an example of this with file uploading:
+This argument can be used to get products by enabled currency, language or even use for uploading files to Moltin.
+
+**Note**: If you add the `Content-Type` custom header to `post`, `put` or `delete` you will need to encode `data` yourself.
 
 ```js
 const { createClient } = require('@moltin/request')
 const FormData = require("form-data")
 
-const moltin = new createClient({
-  client_id: 'X',
-  client_secret: 'X'
-})
-
-const formData = new FormData()
-
-formData.append("file_name", fileName)
-formData.append("public", "true")
-formData.append("file", buffer, { filename: fileName })
-
 const headers = {
-  "Content-Type": formData.getHeaders()["content-type"]
+  "X-Moltin-Currency": "gbp"
 }
 
-const data = {
-  body: formData
-}
-
-moltin
-  .post("files", data, headers)
-  .then(console.log(data))
-  .error(console.error(error))
+client
+  .get('products', headers)
+  .then(console.log)
+  .catch(console.error)
 ```
 
 ## Examples
