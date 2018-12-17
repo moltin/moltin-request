@@ -28,7 +28,7 @@ client
 
 ## Quickstart (client credentials)
 
-⚠️ You should not use client credentials on the client-side. You could risk exposing your client secret, you can read more about authentication [here](https://docs.moltin.com/basics/authentication).
+⚠️ You should not use client credentials on the client-side. You will expose your client secret, read more about authentication [here](https://docs.moltin.com/basics/authentication).
 
 ```js
 const { createClient } = require('@moltin/request')
@@ -76,9 +76,46 @@ const client = new createClient({
   currency: '...',
   customer_token: '...',
   headers: {
-    Accept: 'application/json' // Insert additional headers
+    // ...
   }
 })
+```
+
+## Custom headers per request
+
+The Moltin API provides you the ability to send various request headers that change the way data is stored or retrieved.
+
+By default this library will encode all data as JSON, however you can customise this by setting your own `Content-Type` header as a 4th argument to `get`, `post`, `put` and `delete`.
+
+You can see an example of this with file uploading:
+
+```js
+const { createClient } = require('@moltin/request')
+const FormData = require("form-data")
+
+const moltin = new createClient({
+  client_id: 'X',
+  client_secret: 'X'
+})
+
+const formData = new FormData()
+
+formData.append("file_name", fileName)
+formData.append("public", "true")
+formData.append("file", buffer, { filename: fileName })
+
+const headers = {
+  "Content-Type": formData.getHeaders()["content-type"]
+}
+
+const data = {
+  body: formData
+}
+
+moltin
+  .post("files", data, headers)
+  .then(console.log(data))
+  .error(console.error(error))
 ```
 
 ## Examples
