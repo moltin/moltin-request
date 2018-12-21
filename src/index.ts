@@ -27,56 +27,47 @@ export class createClient {
     data: object = undefined,
     requestHeaders: Headers = {}
   ) {
-    try {
-      const {
-        application,
-        currency,
-        customer_token,
-        host,
-        version,
-        headers: classHeaders
-      } = this.options
+    const {
+      application,
+      currency,
+      customer_token,
+      host,
+      version,
+      headers: classHeaders
+    } = this.options
 
-      const uri: string = `https://${host}/${version}/${removeLeadingSlash(
-        path
-      )}`
+    const uri: string = `https://${host}/${version}/${removeLeadingSlash(path)}`
 
-      const customHeaders = {
-        ...classHeaders,
-        ...requestHeaders
-      }
-
-      const headers: Headers = {
-        'Content-Type': 'application/json',
-        'X-MOLTIN-SDK-LANGUAGE': 'JS-REQUEST',
-        Authorization: `Bearer ${await this.authenticate()}`,
-        ...(application && { 'X-MOLTIN-APPLICATION': application }),
-        ...(currency && { 'X-MOLTIN-CURRENCY': currency }),
-        ...(customer_token && { 'X-MOLTIN-CUSTOMER-TOKEN': customer_token }),
-        ...customHeaders
-      }
-
-      const body = customHeaders['Content-Type']
-        ? data
-        : { body: JSON.stringify({ data }) }
-
-      const response = await fetch(uri, {
-        method,
-        headers,
-        ...(data && body)
-      })
-
-      const json = await response.json()
-
-      return {
-        statusCode: response.status,
-        ...json
-      }
-    } catch (errors) {
-      return {
-        errors
-      }
+    const customHeaders = {
+      ...classHeaders,
+      ...requestHeaders
     }
+
+    const headers: Headers = {
+      'Content-Type': 'application/json',
+      'X-MOLTIN-SDK-LANGUAGE': 'JS-REQUEST',
+      Authorization: `Bearer ${await this.authenticate()}`,
+      ...(application && { 'X-MOLTIN-APPLICATION': application }),
+      ...(currency && { 'X-MOLTIN-CURRENCY': currency }),
+      ...(customer_token && { 'X-MOLTIN-CUSTOMER-TOKEN': customer_token }),
+      ...customHeaders
+    }
+
+    const body = customHeaders['Content-Type']
+      ? data
+      : { body: JSON.stringify({ data }) }
+
+    const response = await fetch(uri, {
+      method,
+      headers,
+      ...(data && body)
+    })
+
+    const json = await response.json()
+
+    if (!response.ok) throw json
+
+    return json
   }
 
   async authenticate() {
