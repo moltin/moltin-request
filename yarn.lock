@@ -120,10 +120,10 @@
     into-stream "^4.0.0"
     lodash "^4.17.4"
 
-"@types/fetch-mock@6.0.5":
-  version "6.0.5"
-  resolved "https://registry.yarnpkg.com/@types/fetch-mock/-/fetch-mock-6.0.5.tgz#acbc6771d43d7ebc1f0a8b7e3d57147618f8eacb"
-  integrity sha512-rV8O2j/TIi0PtFCOlK55JnfKpE8Hm6PKFgrUZY/3FNHw4uBEMHnM+5ZickDO1duOyKxbpY3VES5T4NIwZXvodA==
+"@types/fetch-mock@7.2.1":
+  version "7.2.1"
+  resolved "https://registry.yarnpkg.com/@types/fetch-mock/-/fetch-mock-7.2.1.tgz#5630999aa75532e00af42a54cbe05e1651f4a080"
+  integrity sha512-zuLhLEK4gOPxhkiUhqbG4p0lKY2ePEE//5NHTTn/vjYl0XWpfk2x0Fw7EWKtCjlggEsuc1GvpasD46X9PSZFaA==
 
 "@types/jest@23.3.11":
   version "23.3.11"
@@ -1835,10 +1835,10 @@ fb-watchman@^2.0.0:
   dependencies:
     bser "^2.0.0"
 
-fetch-mock@7.2.5:
-  version "7.2.5"
-  resolved "https://registry.yarnpkg.com/fetch-mock/-/fetch-mock-7.2.5.tgz#4682f51b9fa74d790e10a471066cb22f3ff84d48"
-  integrity sha512-ZdlNxw2xFE2VuGikqWYBcshbfMtWM0k7zWevYgjrFuTiJ1+S7+xjRMxDG1cy45xkpEcqzZAAeqL+uDL5qLZV7g==
+fetch-mock@7.3.0:
+  version "7.3.0"
+  resolved "https://registry.yarnpkg.com/fetch-mock/-/fetch-mock-7.3.0.tgz#4bf41190c19477c4c86ce1739972035bb02b3add"
+  integrity sha512-KxBeS8vsADFbWPVomuwxYqOJ2obZo6CidgkypjDPeu6zl+tAJvh2GfLDmJ8u//xgBGM9iOGwOxafeqAclilH2A==
   dependencies:
     babel-polyfill "^6.26.0"
     glob-to-regexp "^0.4.0"

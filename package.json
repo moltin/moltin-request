@@ -17,9 +17,9 @@
     "cross-fetch": "2.2.3"
   },
   "devDependencies": {
-    "@types/fetch-mock": "6.0.5",
+    "@types/fetch-mock": "7.2.1",
     "@types/jest": "23.3.11",
-    "fetch-mock": "7.2.5",
+    "fetch-mock": "7.3.0",
     "jest": "23.6.0",
     "rimraf": "2.6.2",
     "semantic-release": "15.13.2",
