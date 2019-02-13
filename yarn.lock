@@ -120,10 +120,10 @@
     into-stream "^4.0.0"
     lodash "^4.17.4"
 
-"@types/fetch-mock@7.2.1":
-  version "7.2.1"
-  resolved "https://registry.yarnpkg.com/@types/fetch-mock/-/fetch-mock-7.2.1.tgz#5630999aa75532e00af42a54cbe05e1651f4a080"
-  integrity sha512-zuLhLEK4gOPxhkiUhqbG4p0lKY2ePEE//5NHTTn/vjYl0XWpfk2x0Fw7EWKtCjlggEsuc1GvpasD46X9PSZFaA==
+"@types/fetch-mock@7.2.3":
+  version "7.2.3"
+  resolved "https://registry.yarnpkg.com/@types/fetch-mock/-/fetch-mock-7.2.3.tgz#0c7743ffbae60df47660dcfc59823f529915bda5"
+  integrity sha512-M2feXxzahlIpxc1AsyGrvYqdKhqVG1CfzYEuNbmsoQeUWIsShlFD347ASNauXPyvPDwJR8kh4FmGLBG4aA/2bw==
 
 "@types/jest@23.3.11":
   version "23.3.11"
