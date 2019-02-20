@@ -61,6 +61,27 @@ client
   .catch(console.error)
 ```
 
+## Quickstart (with storage)
+
+To prevent unnecessary authentication requests, you will want to use a storage adapter.
+
+### Node Local Storage
+
+```js
+const { createClient } = require('@moltin/request')
+const NodeStorageAdapter = require('@moltin/node-storage-adapter')
+
+const client = new createClient({
+  client_id: '...',
+  storage: new NodeStorageAdapter('./localStorage')
+})
+
+client
+  .get('products')
+  .then(console.log)
+  .catch(console.error)
+```
+
 ## Kitchen sink
 
 ```js
@@ -99,7 +120,7 @@ const client = new createClient({
 })
 
 const headers = {
-  "X-Moltin-Currency": "gbp"
+  'X-Moltin-Currency': 'gbp'
 }
 
 client
