@@ -97,7 +97,8 @@ export class createClient {
     const response = await fetch(uri, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'X-MOLTIN-SDK-LANGUAGE': 'JS-REQUEST'
       },
       body: Object.keys(body)
         .map(k => `${encodeURIComponent(k)}=${encodeURIComponent(body[k])}`)
