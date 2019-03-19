@@ -61,7 +61,7 @@ client
   .catch(console.error)
 ```
 
-## Quickstart (with storage)
+## Quickstart (with storage)
 
 To prevent unnecessary authentication requests, you will want to use a storage adapter.
 
