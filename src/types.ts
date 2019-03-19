@@ -1,6 +1,7 @@
 export interface InitOptions {
   client_id: string
   client_secret?: string
+  storage?: StorageFactory
   host?: string
   version?: string
   application?: string
@@ -26,4 +27,10 @@ export interface AuthBody {
   grant_type: 'client_credentials' | 'implicit'
   client_id: string
   client_secret?: string
+}
+
+export interface StorageFactory {
+  set(key: string, value: string): void
+  get(key: string): string | null
+  delete(key: string): void
 }

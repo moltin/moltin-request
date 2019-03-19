@@ -1,19 +1,27 @@
 import 'cross-fetch/polyfill'
 
-import { InitOptions, Options, Headers, AuthBody } from './types'
+import {
+  InitOptions,
+  Options,
+  Headers,
+  AuthBody,
+  StorageFactory
+} from './types'
 import { removeLeadingSlash } from './utils'
 export { createCartIdentifier } from './utils'
 
 export class createClient {
   private client_id: string
   private client_secret?: string
+  private storage?: StorageFactory
   private options?: Options
 
   constructor(options: InitOptions) {
-    const { client_id, client_secret, ...others } = options
+    const { client_id, client_secret, storage, ...others } = options
 
     this.client_id = client_id
     this.client_secret = client_secret ? client_secret : undefined
+    this.storage = storage
     this.options = {
       host: options.host ? options.host : 'api.moltin.com',
       version: options.version ? options.version : 'v2',
@@ -28,13 +36,17 @@ export class createClient {
     requestHeaders: Headers = {}
   ) {
     const {
-      application,
-      currency,
-      customer_token,
-      host,
-      version,
-      headers: classHeaders
-    } = this.options
+      client_id,
+      storage,
+      options: {
+        application,
+        currency,
+        customer_token,
+        host,
+        version,
+        headers: classHeaders
+      }
+    } = this
 
     const uri: string = `https://${host}/${version}/${removeLeadingSlash(path)}`
 
@@ -43,10 +55,27 @@ export class createClient {
       ...requestHeaders
     }
 
+    let credentials
+    let access_token
+
+    if (storage) {
+      credentials = await JSON.parse(storage.get('moltinCredentials'))
+    }
+
+    access_token =
+      !credentials ||
+      !credentials.access_token ||
+      credentials.client_id !== client_id ||
+      Math.floor(Date.now() / 1000) >= credentials.expires
+        ? await this.authenticate()
+        : credentials.access_token
+
+    console.log({ access_token })
+
     const headers: Headers = {
       'Content-Type': 'application/json',
       'X-MOLTIN-SDK-LANGUAGE': 'JS-REQUEST',
-      Authorization: `Bearer ${await this.authenticate()}`,
+      Authorization: `Bearer ${access_token}`,
       ...(application && { 'X-MOLTIN-APPLICATION': application }),
       ...(currency && { 'X-MOLTIN-CURRENCY': currency }),
       ...(customer_token && { 'X-MOLTIN-CUSTOMER-TOKEN': customer_token }),
@@ -79,6 +108,7 @@ export class createClient {
     const {
       client_id,
       client_secret,
+      storage,
       options: { host }
     } = this
 
@@ -105,28 +135,41 @@ export class createClient {
         .join('&')
     })
 
-    const { access_token }: { access_token: string } = await response.json()
+    const {
+      access_token,
+      expires
+    }: { access_token: string; expires: number } = await response.json()
 
     if (!access_token) {
       throw new Error('Unable to obtain an access token')
     }
 
+    if (storage) {
+      const credentials = {
+        client_id,
+        access_token,
+        expires
+      }
+
+      await storage.set('moltinCredentials', JSON.stringify(credentials))
+    }
+
     return access_token
   }
 
-  post(path: string, data: object, headers: Headers) {
+  post(path: string, data: object, headers?: Headers) {
     return this.request('POST', path, data, headers)
   }
 
-  get(path: string, headers: Headers) {
+  get(path: string, headers?: Headers) {
     return this.request('GET', path, undefined, headers)
   }
 
-  put(path: string, data: object, headers: Headers) {
+  put(path: string, data: object, headers?: Headers) {
     return this.request('PUT', path, data, headers)
   }
 
-  delete(path: string, data: object, headers: Headers) {
+  delete(path: string, data: object, headers?: Headers) {
     return this.request('DELETE', path, data, headers)
   }
 }
