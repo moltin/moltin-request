@@ -70,6 +70,8 @@ export class createClient {
         ? await this.authenticate()
         : credentials.access_token
 
+    console.log({ access_token })
+
     const headers: Headers = {
       'Content-Type': 'application/json',
       'X-MOLTIN-SDK-LANGUAGE': 'JS-REQUEST',
@@ -155,19 +157,19 @@ export class createClient {
     return access_token
   }
 
-  post(path: string, data: object, headers: Headers) {
+  post(path: string, data: object, headers?: Headers) {
     return this.request('POST', path, data, headers)
   }
 
-  get(path: string, headers: Headers) {
+  get(path: string, headers?: Headers) {
     return this.request('GET', path, undefined, headers)
   }
 
-  put(path: string, data: object, headers: Headers) {
+  put(path: string, data: object, headers?: Headers) {
     return this.request('PUT', path, data, headers)
   }
 
-  delete(path: string, data: object, headers: Headers) {
+  delete(path: string, data: object, headers?: Headers) {
     return this.request('DELETE', path, data, headers)
   }
 }
