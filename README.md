@@ -91,6 +91,7 @@ const { createClient } = require('@moltin/request')
 const client = new createClient({
   client_id: '...',
   client_secret: '...',
+  storage: new NodeStorageAdapter('./moltin'),
   host: '...',
   version: '...',
   application: '...',
