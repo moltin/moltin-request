@@ -92,7 +92,6 @@ export class createClient {
       ...(data && body)
     })
 
-    // No JSON body if a delete response
     if(response.status === 204)
       return response.text()
 
