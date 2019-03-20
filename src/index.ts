@@ -92,7 +92,7 @@ export class createClient {
       ...(data && body)
     })
 
-    if(response.status === 204)
+    if (response.status === 204)
       return response.text()
 
     const json = await response.json()
