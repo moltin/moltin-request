@@ -70,8 +70,6 @@ export class createClient {
         ? await this.authenticate()
         : credentials.access_token
 
-    console.log({ access_token })
-
     const headers: Headers = {
       'Content-Type': 'application/json',
       'X-MOLTIN-SDK-LANGUAGE': 'JS-REQUEST',
