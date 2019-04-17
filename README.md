@@ -82,6 +82,25 @@ client
   .catch(console.error)
 ```
 
+## Quickstart (with custom fetch)
+
+This library uses [cross-fetch](https://github.com/lquixada/cross-fetch) to make requests. If you wish to change this library, you can pass a custom fetch when instanitating a new moltin client.
+
+```js
+const { createClient } = require('@moltin/request')
+const fetchEverywhere = require('fetch-everywhere')
+
+const client = new createClient({
+  client_id: '...',
+  fetch: fetchEverywhere
+})
+
+client
+  .get('products')
+  .then(console.log)
+  .catch(console.error)
+```
+
 ## Kitchen sink
 
 ```js
@@ -91,6 +110,7 @@ const { createClient } = require('@moltin/request')
 const client = new createClient({
   client_id: '...',
   client_secret: '...',
+  fetch: customFetch,
   storage: new NodeStorageAdapter('./moltin'),
   host: '...',
   version: '...',
