@@ -84,7 +84,7 @@ client
 
 ## Quickstart (with custom fetch)
 
-This library uses [cross-fetch](https://github.com/lquixada/cross-fetch) to make requests. If you wish to change this library, you can pass a custom fetch when instanitating a new moltin client.
+This library uses [cross-fetch](https://github.com/lquixada/cross-fetch) to make requests. If you wish to change this library, you can pass a custom fetch when instantiating a new moltin client.
 
 ```js
 const { createClient } = require('@moltin/request')
