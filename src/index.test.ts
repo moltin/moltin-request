@@ -1,3 +1,5 @@
+import fetch from 'cross-fetch'
+
 import { createClient } from './'
 
 describe('config', () => {
@@ -14,6 +16,17 @@ describe('config', () => {
 
   it('cannot authenticate with incorrect client_id', async () => {
     const client = new createClient({ client_id: 'X' })
+    expect.assertions(1)
+
+    try {
+      await client.authenticate()
+    } catch (error) {
+      expect(error.message).toEqual('Unable to obtain an access token')
+    }
+  })
+
+  it('can fetch using provided fetch library', async () => {
+    const client = new createClient({ client_id: 'X', fetch })
     expect.assertions(1)
 
     try {
