@@ -1,6 +1,7 @@
 export interface InitOptions {
   client_id: string
   client_secret?: string
+  fetch?: Fetch
   storage?: StorageFactory
   host?: string
   version?: string
@@ -11,6 +12,7 @@ export interface InitOptions {
 }
 
 export interface Options {
+  fetch?: Fetch
   application?: string
   currency?: string
   customer_token?: string
@@ -33,4 +35,8 @@ export interface StorageFactory {
   set(key: string, value: string): void
   get(key: string): string | null
   delete(key: string): void
+}
+
+export interface Fetch {
+  (input?: Request | string, init?: RequestInit): Promise<Response>
 }
