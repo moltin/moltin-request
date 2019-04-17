@@ -1,11 +1,12 @@
-import 'cross-fetch/polyfill'
+import fetch from 'cross-fetch'
 
 import {
   InitOptions,
   Options,
   Headers,
   AuthBody,
-  StorageFactory
+  StorageFactory,
+  Fetch
 } from './types'
 import { removeLeadingSlash } from './utils'
 export { createCartIdentifier } from './utils'
@@ -15,6 +16,7 @@ export class createClient {
   private client_secret?: string
   private storage?: StorageFactory
   private options?: Options
+  private fetch?: Fetch
 
   constructor(options: InitOptions) {
     const { client_id, client_secret, storage, ...others } = options
@@ -22,6 +24,7 @@ export class createClient {
     this.client_id = client_id
     this.client_secret = client_secret ? client_secret : undefined
     this.storage = storage
+    this.fetch = options.fetch ? options.fetch : fetch
     this.options = {
       host: options.host ? options.host : 'api.moltin.com',
       version: options.version ? options.version : 'v2',
@@ -84,14 +87,13 @@ export class createClient {
       ? data
       : { body: JSON.stringify({ data }) }
 
-    const response = await fetch(uri, {
+    const response = await this.fetch(uri, {
       method,
       headers,
       ...(data && body)
     })
 
-    if (response.status === 204)
-      return response.text()
+    if (response.status === 204) return response.text()
 
     const json = await response.json()
 
@@ -125,7 +127,7 @@ export class createClient {
       ...(client_secret && { client_secret })
     }
 
-    const response = await fetch(uri, {
+    const response = await this.fetch(uri, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
