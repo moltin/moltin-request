@@ -1,24 +1,17 @@
 import fetch from 'cross-fetch'
 
-import {
-  InitOptions,
-  Options,
-  Headers,
-  AuthBody,
-  StorageFactory,
-  Fetch
-} from './types'
+import * as types from './types'
 import { removeLeadingSlash } from './utils'
 export { createCartIdentifier } from './utils'
 
 export class createClient {
   private client_id: string
   private client_secret?: string
-  private storage?: StorageFactory
-  private options?: Options
-  private fetch?: Fetch
+  private storage?: types.StorageFactory
+  private options?: types.Options
+  private fetch?: types.Fetch
 
-  constructor(options: InitOptions) {
+  constructor(options: types.InitOptions) {
     const { client_id, client_secret, storage, ...others } = options
 
     this.client_id = client_id
@@ -36,7 +29,7 @@ export class createClient {
     method: string,
     path: string,
     data: object = undefined,
-    requestHeaders: Headers = {}
+    requestHeaders: types.Headers = {}
   ) {
     const {
       client_id,
@@ -58,8 +51,8 @@ export class createClient {
       ...requestHeaders
     }
 
-    let credentials
-    let access_token
+    let credentials: types.Credentials
+    let access_token: string
 
     if (storage) {
       credentials = await JSON.parse(storage.get('moltinCredentials'))
@@ -73,7 +66,7 @@ export class createClient {
         ? await this.authenticate()
         : credentials.access_token
 
-    const headers: Headers = {
+    const headers: types.Headers = {
       'Content-Type': 'application/json',
       'X-MOLTIN-SDK-LANGUAGE': 'JS-REQUEST',
       Authorization: `Bearer ${access_token}`,
@@ -121,7 +114,7 @@ export class createClient {
 
     const uri: string = `https://${host}/oauth/access_token`
 
-    const body: AuthBody = {
+    const body: types.AuthBody = {
       grant_type: client_secret ? 'client_credentials' : 'implicit',
       client_id,
       ...(client_secret && { client_secret })
@@ -138,10 +131,7 @@ export class createClient {
         .join('&')
     })
 
-    const {
-      access_token,
-      expires
-    }: { access_token: string; expires: number } = await response.json()
+    const { access_token, expires }: types.Credentials = await response.json()
 
     if (!access_token) {
       throw new Error('Unable to obtain an access token')
@@ -160,19 +150,19 @@ export class createClient {
     return access_token
   }
 
-  post(path: string, data: object, headers?: Headers) {
+  post(path: string, data: object, headers?: types.Headers) {
     return this.request('POST', path, data, headers)
   }
 
-  get(path: string, headers?: Headers) {
+  get(path: string, headers?: types.Headers) {
     return this.request('GET', path, undefined, headers)
   }
 
-  put(path: string, data: object, headers?: Headers) {
+  put(path: string, data: object, headers?: types.Headers) {
     return this.request('PUT', path, data, headers)
   }
 
-  delete(path: string, data: object, headers?: Headers) {
+  delete(path: string, data: object, headers?: types.Headers) {
     return this.request('DELETE', path, data, headers)
   }
 }

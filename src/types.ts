@@ -40,3 +40,9 @@ export interface StorageFactory {
 export interface Fetch {
   (input?: Request | string, init?: RequestInit): Promise<Response>
 }
+
+export interface Credentials {
+  client_id: string
+  access_token: string
+  expires: number
+}
