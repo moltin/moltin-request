@@ -6,9 +6,9 @@
     "start": "next start"
   },
   "dependencies": {
-    "@moltin/request": "^1.4.2",
-    "next": "^7.0.2",
-    "react": "^16.6.3",
-    "react-dom": "^16.6.3"
+    "@moltin/request": "latest",
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest"
   }
 }

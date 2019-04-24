@@ -4,8 +4,8 @@
     "dev": "node index.js"
   },
   "dependencies": {
-    "@moltin/request": "^1.4.2",
-    "apollo-server": "^2.3.1",
-    "graphql": "^14.0.2"
+    "@moltin/request": "latest",
+    "apollo-server": "latest",
+    "graphql": "latest"
   }
 }
