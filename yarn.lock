@@ -420,10 +420,10 @@
   dependencies:
     "@babel/types" "^7.3.0"
 
-"@types/fetch-mock@7.2.4":
-  version "7.2.4"
-  resolved "https://registry.yarnpkg.com/@types/fetch-mock/-/fetch-mock-7.2.4.tgz#e5c4a437aad25bd3addf531944ceaae3dedd70ca"
-  integrity sha512-YfUjZmQJKTQaNi/NvLSpmjIV/evOIfaOokjiWQcQZZrZ9EiZ31OJecGO2JFAtyhOCdMj+js+wSTOpM8XTPh5jg==
+"@types/fetch-mock@7.2.5":
+  version "7.2.5"
+  resolved "https://registry.yarnpkg.com/@types/fetch-mock/-/fetch-mock-7.2.5.tgz#512f8beec4007a90db6269660b6b4f5e04682d87"
+  integrity sha512-iJSYZ4PjDdBShaEUWOy7wXWRlI6fHLDVHd+AnUggNjjNsict7qJOeZiejnFDSETECxFgdQ7BSBEFhR4U+k0FHw==
 
 "@types/istanbul-lib-coverage@*":
   version "2.0.1"
