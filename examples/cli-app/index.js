@@ -1,5 +1,5 @@
 const meow = require('meow')
-const MoltinClient = require('@moltin/request')
+const { MoltinClient } = require('@moltin/request')
 const ora = require('ora')
 
 const moltin = new MoltinClient({

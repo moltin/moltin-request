@@ -1,5 +1,5 @@
 const { send } = require('micro')
-const MoltinClient = require('@moltin/request')
+const { MoltinClient } = require('@moltin/request')
 
 const { MOLTIN_CLIENT_ID, MOLTIN_CLIENT_SECRET } = process.env
 

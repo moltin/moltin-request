@@ -1,6 +1,6 @@
 import fetch from 'cross-fetch'
 
-import MoltinClient from './'
+import { MoltinClient } from './'
 
 describe('config', () => {
   it('requires a client_id', async () => {

@@ -1,5 +1,5 @@
 const express = require('express')
-const MoltinClient = require('@moltin/request')
+const { MoltinClient } = require('@moltin/request')
 
 const app = express()
 const moltin = new MoltinClient({
