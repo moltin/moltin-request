@@ -1,10 +1,10 @@
 import fetch from 'cross-fetch'
 
-import { createClient } from './'
+import MoltinClient from './'
 
 describe('config', () => {
   it('requires a client_id', async () => {
-    const client = new createClient({ client_id: '' })
+    const client = new MoltinClient({ client_id: '' })
     expect.assertions(1)
 
     try {
@@ -15,7 +15,7 @@ describe('config', () => {
   })
 
   it('cannot authenticate with incorrect client_id', async () => {
-    const client = new createClient({ client_id: 'X' })
+    const client = new MoltinClient({ client_id: 'X' })
     expect.assertions(1)
 
     try {
@@ -26,7 +26,7 @@ describe('config', () => {
   })
 
   it('can fetch using provided fetch library', async () => {
-    const client = new createClient({ client_id: 'X', fetch })
+    const client = new MoltinClient({ client_id: 'X', fetch })
     expect.assertions(1)
 
     try {
