@@ -4,7 +4,7 @@ import * as types from './types'
 import { removeLeadingSlash } from './utils'
 export { createCartIdentifier } from './utils'
 
-export class createClient {
+export default class MoltinClient {
   private client_id: string
   private client_secret?: string
   private storage?: types.StorageFactory
