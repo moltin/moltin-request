@@ -13,10 +13,10 @@ yarn add @moltin/request # npm install @moltin/request
 ## Quickstart (implicit)
 
 ```js
-const { createClient } = require('@moltin/request')
-// import { createClient } from '@moltin/request'
+const MoltinClient = require('@moltin/request')
+// import MoltinClient from '@moltin/request'
 
-const client = new createClient({
+const client = new MoltinClient({
   client_id: '...'
 })
 
@@ -31,10 +31,10 @@ client
 ⚠️ You should not use client credentials on the client-side. You will expose your client secret, read more about authentication [here](https://docs.moltin.com/basics/authentication).
 
 ```js
-const { createClient } = require('@moltin/request')
-// import { createClient } from '@moltin/request'
+const MoltinClient = require('@moltin/request')
+// import MoltinClient from '@moltin/request'
 
-const client = new createClient({
+const client = new MoltinClient({
   client_id: '...',
   client_secret: '...'
 })
@@ -68,10 +68,10 @@ To prevent unnecessary authentication requests, you will want to use a storage a
 ### Node Local Storage
 
 ```js
-const { createClient } = require('@moltin/request')
+const MoltinClient = require('@moltin/request')
 const NodeStorageAdapter = require('@moltin/node-storage-adapter')
 
-const client = new createClient({
+const client = new MoltinClient({
   client_id: '...',
   storage: new NodeStorageAdapter('./localStorage')
 })
@@ -87,10 +87,10 @@ client
 This library uses [cross-fetch](https://github.com/lquixada/cross-fetch) to make requests. If you wish to change this library, you can pass a custom fetch when instantiating a new moltin client.
 
 ```js
-const { createClient } = require('@moltin/request')
+const MoltinClient = require('@moltin/request')
 const fetchEverywhere = require('fetch-everywhere')
 
-const client = new createClient({
+const client = new MoltinClient({
   client_id: '...',
   fetch: fetchEverywhere
 })
@@ -104,10 +104,10 @@ client
 ## Kitchen sink
 
 ```js
-const { createClient } = require('@moltin/request')
-// import { createClient } from '@moltin/request'
+const MoltinClient = require('@moltin/request')
+// import MoltinClient from '@moltin/request'
 
-const client = new createClient({
+const client = new MoltinClient({
   client_id: '...',
   client_secret: '...',
   fetch: customFetch,
@@ -134,9 +134,9 @@ This argument can be used to get products by enabled currency, language or even 
 **Note**: If you add the `Content-Type` custom header to `post`, `put` or `delete` you will need to encode `data` yourself.
 
 ```js
-const { createClient } = require('@moltin/request')
+const MoltinClient = require('@moltin/request')
 
-const client = new createClient({
+const client = new MoltinClient({
   client_id: '...'
 })
 
