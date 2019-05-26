@@ -14,7 +14,7 @@ yarn add @moltin/request # npm install @moltin/request
 
 ```js
 const { MoltinClient } = require('@moltin/request')
-// import {MoltinClient} from '@moltin/request'
+// import { MoltinClient } from '@moltin/request'
 
 const client = new MoltinClient({
   client_id: '...'
@@ -32,7 +32,7 @@ client
 
 ```js
 const { MoltinClient } = require('@moltin/request')
-// import {MoltinClient} from '@moltin/request'
+// import { MoltinClient } from '@moltin/request'
 
 const client = new MoltinClient({
   client_id: '...',
@@ -105,7 +105,7 @@ client
 
 ```js
 const { MoltinClient } = require('@moltin/request')
-// import {MoltinClient} from '@moltin/request'
+// import { MoltinClient } from '@moltin/request'
 
 const client = new MoltinClient({
   client_id: '...',
