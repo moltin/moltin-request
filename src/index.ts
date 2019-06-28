@@ -19,7 +19,7 @@ export class MoltinClient {
     this.storage = storage
     this.fetch = options.fetch ? options.fetch : fetch
     this.options = {
-      host: options.host ? options.host : 'api.moltin.com',
+      host: options.host ? options.host : 'https://api.moltin.com',
       version: options.version ? options.version : 'v2',
       ...others
     }
@@ -44,7 +44,7 @@ export class MoltinClient {
       }
     } = this
 
-    const uri: string = `https://${host}/${version}/${removeLeadingSlash(path)}`
+    const uri: string = `${host}/${version}/${removeLeadingSlash(path)}`
 
     const customHeaders = {
       ...classHeaders,
@@ -112,7 +112,7 @@ export class MoltinClient {
       throw new Error('You must provide a client_id')
     }
 
-    const uri: string = `https://${host}/oauth/access_token`
+    const uri: string = `${host}/oauth/access_token`
 
     const body: types.AuthBody = {
       grant_type: client_secret ? 'client_credentials' : 'implicit',
