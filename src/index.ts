@@ -2,7 +2,7 @@ import fetch from 'cross-fetch'
 
 import * as types from './types'
 import { removeLeadingSlash } from './utils'
-export { createCartIdentifier } from './utils'
+export { createCartIdentifier, getChildId } from './utils'
 
 export class MoltinClient {
   private client_id: string
