@@ -4,6 +4,8 @@
 
 > 🎮 Minimal Moltin API request library for Node
 
+[Examples](https://github.com/moltin/examples) &middot; [Forum](https://spectrum.chat/moltin) &middot; [API Reference](https://docs.moltin.com/api)
+
 ## Installation
 
 ```bash
@@ -82,6 +84,36 @@ client
   .catch(console.error)
 ```
 
+### `window.localStorage`
+
+```js
+const { MoltinClient } = require('@moltin/request')
+
+class LocalStorageAdapter {
+  set(key, value) {
+    return window.localStorage.setItem(key, value)
+  }
+
+  get(key) {
+    return window.localStorage.getItem(key)
+  }
+
+  delete(key) {
+    return window.localStorage.removeItem(key)
+  }
+}
+
+const client = new MoltinClient({
+  client_id: '...',
+  storage: new LocalStorageAdapter()
+})
+
+client
+  .get('products')
+  .then(console.log)
+  .catch(console.error)
+```
+
 ## Quickstart (with custom fetch)
 
 This library uses [cross-fetch](https://github.com/lquixada/cross-fetch) to make requests. If you wish to change this library, you can pass a custom fetch when instantiating a new moltin client.
@@ -149,13 +181,3 @@ client
   .then(console.log)
   .catch(console.error)
 ```
-
-## Examples
-
-The examples below demonstrate how you connect this library with other frameworks and tools.
-
-- [Express](/examples/express)
-- [Next.js](/examples/next)
-- [CLI app](/examples/cli-app)
-- [Zeit micro](/examples/micro)
-- [Apollo GraphQL Server](/examples/apollo-server)
