@@ -22,7 +22,7 @@
     "fetch-mock": "7.7.3",
     "jest": "24.9.0",
     "rimraf": "2.7.1",
-    "semantic-release": "15.13.30",
+    "semantic-release": "15.13.31",
     "ts-jest": "24.1.0",
     "typescript": "3.7.2"
   },
