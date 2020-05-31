@@ -1,10 +1,17 @@
-# @moltin/request
+<img src="https://www.elasticpath.com/themes/custom/bootstrap_sass/logo.svg" alt="" width="400" />
 
-[![npm version](https://img.shields.io/npm/v/@moltin/request.svg)](https://www.npmjs.com/package/@moltin/request) [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+# Elastic Path Commerce Cloud @moltin/request
 
-> 🎮 Minimal Moltin API request library for Node
+[![npm version](https://img.shields.io/npm/v/@moltin/request.svg)](https://www.npmjs.com/package/@moltin/request) 
+[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release) 
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/moltin/moltin-request/issues)
+[![follow on Twitter](https://img.shields.io/twitter/follow/elasticpath?style=social&logo=twitter)](https://twitter.com/intent/follow?screen_name=elasticpath)
 
-[Examples](https://github.com/moltin/examples) &middot; [Forum](https://spectrum.chat/moltin) &middot; [API Reference](https://docs.moltin.com/api)
+> 🎮 Minimal Elastic Path Commerce Cloud API request library for Node
+
+[Examples](https://github.com/moltin/examples) &middot; [API Reference](https://documentation.elasticpath.com/commerce-cloud/docs/api/index.html)
 
 ## Installation
 
@@ -30,7 +37,7 @@ client
 
 ## Quickstart (client credentials)
 
-⚠️ You should not use client credentials on the client-side. You will expose your client secret, read more about authentication [here](https://docs.moltin.com/basics/authentication).
+⚠️ You should not use client credentials on the client-side. You will expose your client secret, read more about authentication [here](https://documentation.elasticpath.com/commerce-cloud/docs/api/basics/authentication/index.html).
 
 ```js
 const { MoltinClient } = require('@moltin/request')
@@ -157,11 +164,11 @@ const client = new MoltinClient({
 
 ## Custom headers per request
 
-The Moltin API provides you the ability to send various request headers that change the way data is stored or retrieved.
+The Elastic Path Commerce Cloud API provides you the ability to send various request headers that change the way data is stored or retrieved.
 
 By default this library will encode all data as JSON, however you can customise this by setting your own `Content-Type` header as an additional argument to `get`, `post`, `put` and `delete`.
 
-This argument can be used to get products by enabled currency, language or even use for uploading files to Moltin.
+This argument can be used to get products by enabled currency, language or even use for uploading files to Elastic Path Commerce Cloud.
 
 **Note**: If you add the `Content-Type` custom header to `post`, `put` or `delete` you will need to encode `data` yourself.
 
@@ -181,3 +188,8 @@ client
   .then(console.log)
   .catch(console.error)
 ```
+
+## Terms And Conditions
+
+- Any changes to this project must be reviewed and approved by the repository owner. For more information about contributing, see the [Contribution Guide](https://github.com/moltin/gatsby-demo-store/blob/master/.github/CONTRIBUTING.md).
+- For more information about the license, see [MIT License](https://github.com/moltin/moltin-request/blob/master/LICENSE).
