@@ -14,7 +14,7 @@
     "semantic-release": "semantic-release"
   },
   "dependencies": {
-    "cross-fetch": "3.0.5"
+    "cross-fetch": "3.0.6"
   },
   "devDependencies": {
     "@types/fetch-mock": "7.3.3",
