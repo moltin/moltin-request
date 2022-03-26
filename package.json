@@ -18,12 +18,12 @@
   },
   "devDependencies": {
     "@types/fetch-mock": "7.3.3",
-    "@types/jest": "24.9.1",
+    "@types/jest": "27.4.1",
     "fetch-mock": "7.7.3",
-    "jest": "24.9.0",
+    "jest": "27.5.1",
     "rimraf": "2.7.1",
     "semantic-release": "15.14.0",
-    "ts-jest": "24.3.0",
+    "ts-jest": "27.1.4",
     "typescript": "3.9.7"
   },
   "publishConfig": {
